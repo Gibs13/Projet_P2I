@@ -1,0 +1,7 @@
+https://www.robotshop.com/en/parallax-2-axis-joystick.html
+https://skyduino.wordpress.com/2012/03/27/arduino-utiliser-un-joystick-pour-controler-la-directionvitesse-dun-robot/
+rj12 connecteur cables datasheet
+https://makezine.com/projects/hacking-the-lego-ev3-build-your-own-object-sensor-eyes/
+https://www.sparkfun.com/tutorials/2720
+https://engmuhannadalkhudari.wordpress.com/2016/02/11/nxtev3-arduino-i2c-ultimate-guide/
+https://howtomechatronics.com/tutorials/arduino/how-i2c-communication-works-and-how-to-use-it-with-arduino/
