@@ -5,3 +5,6 @@ https://makezine.com/projects/hacking-the-lego-ev3-build-your-own-object-sensor-
 https://www.sparkfun.com/tutorials/2720
 https://engmuhannadalkhudari.wordpress.com/2016/02/11/nxtev3-arduino-i2c-ultimate-guide/
 https://howtomechatronics.com/tutorials/arduino/how-i2c-communication-works-and-how-to-use-it-with-arduino/
+https://www.dexterindustries.com/howto/connect-the-arduino-and-the-lego-mindstorms-together/
+http://nxtarduino.blogspot.fr/2013/10/week-7-nxt-has-arrived.html
+http://www.juanantonio.info/docs/2008/JAVA-LEJOS-I2C.pdf
