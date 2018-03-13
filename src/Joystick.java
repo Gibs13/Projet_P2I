@@ -1,31 +1,48 @@
 
-import lejos .hardware.Button;
-import lejos.hardware.port.SensorPort;
+import lejos.hardware.port.Port;
 import lejos.hardware.sensor.I2CSensor;
-import lejos.utility.*;
 
 public class Joystick {
 
-	static int I2CSlaveAddress = 0x08;
-    static byte[] buf = new byte[1];
-
-    public static void main(String[] args) {
-        System.out.println("Arduino Connection Test");	
-        I2CSensor arduino = new I2CSensor(SensorPort.S1, I2CSlaveAddress);
-
-        System.out.println(arduino.getAddress());
+	private int I2CSlaveAddress = 0x08;
+	I2CSensor arduino;
+	private byte[] buf = new byte[5];
+    
+	private int xValue = 0; // variable to store x value
+	private int yValue = 0; // variable to store y value
+	private int pushed;
+	
+	Joystick(Port S){
+		this.arduino = new I2CSensor(S, I2CSlaveAddress);
+		
+	}
+	
+	void actualisation(){
+		arduino.getData('B', buf, buf.length);
+        arduino.setRetryCount(10);
         
-        while (Button.ESCAPE.isUp()) {
-            int id = Button.waitForAnyPress();
-            if (id == Button.ID_ENTER) {
-             arduino.sendData(I2CSlaveAddress,buf,0,1);
-             arduino.getData('B', buf, buf.length);
-             arduino.setRetryCount(10);
-             Delay.msDelay(50);
-             System.out.println(new String(buf));
-            }
-        } 
-        Button.waitForAnyPress();
+        xValue = buf[1] << 8 | (buf[0] & 0xFF);
+        yValue = buf[3] << 8 | (buf[4] & 0xFF);
+		pushed = buf[5];
+		
+	}
+	
+    int getVertical(){
+    	actualisation();
+    	return xValue;
+    };
+    
+    int getHorizontal(){
+    	actualisation();
+    	return yValue;
+    };
+    
+    boolean isPushed(){
+    	actualisation();
+    	return pushed==0;
+    }
+    
+    public void close() {
         arduino.close();
     }
 	
