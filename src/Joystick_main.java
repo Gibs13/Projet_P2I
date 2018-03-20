@@ -15,9 +15,15 @@ public class Joystick_main {
     static int yValue = 0; // variable to store y value
 
     public static void main(String[] args) {
-        System.out.println("Arduino Connection Test");	
+        System.out.println("Arduino Connection Test");
+        
+        
         I2CSensor arduino = new I2CSensor(SensorPort.S1, I2CSlaveAddress);
+        
+        
+        
         System.out.println(arduino.getAddress());
+        
         
         UnregulatedMotor motor1 = new UnregulatedMotor(MotorPort.A);
         UnregulatedMotor motor2 = new UnregulatedMotor(MotorPort.B);
@@ -25,18 +31,21 @@ public class Joystick_main {
         motor2.resetTachoCount();
         
         while (Button.ESCAPE.isUp()) {
+        	
+        	
              arduino.getData('B', buf, buf.length);
+             
              arduino.setRetryCount(10);
              Delay.msDelay(50);
-             xValue = buf[1] << 8 | (buf[0] & 0xFF);
-             yValue = buf[3] << 8 | (buf[2] & 0xFF);
+             xValue = ((buf[1] << 8 | (buf[0] & 0xFF))-508);
+             yValue = ((buf[3] << 8 | (buf[2] & 0xFF))-496);
              System.out.println(""+xValue+"\n"+yValue+"\n"+buf[4]);
              if(buf[4]==0){
             	 motor1.setPower(0);
             	 motor2.setPower(0);
              } else {
-            	 motor1.setPower(xValue/10);
-            	 motor2.setPower(yValue/10);
+            	 motor1.setPower(xValue/5);
+            	 motor2.setPower(yValue/5);
              }
         }
         
