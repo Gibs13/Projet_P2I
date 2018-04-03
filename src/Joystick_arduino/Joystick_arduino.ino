@@ -13,9 +13,16 @@ void setup()
 {
   Serial.begin(9600); // start serial for output
 
+
+
+
   Wire.begin(SLAVE_ADDRESS);
   Wire.onReceive(receiveData);
   Wire.onRequest(sendData);
+
+
+
+  
 
   pinMode(inX, INPUT); // setup x input
   pinMode(inY, INPUT); // setup y input
@@ -38,6 +45,10 @@ void loop()
   data[4] = (byte) notPressed;
 }
 
+
+
+
+
 void receiveData(int byteCount)
 {
   Serial.println("Received!");
@@ -49,6 +60,12 @@ void receiveData(int byteCount)
   }
 }
 // callback for sending data
+
+
+
+
+
+
 void sendData()
 {
   Serial.println("Request!");
