@@ -7,3 +7,4 @@
 - Prise d'un petit thé de la part de Mathis Guilhin
 - Reflexion sur la tribologie
 - Etiquettes pour les câbles
+- Modification de position des câbles
