@@ -1,0 +1,9 @@
+24/04/2018
+
+- Travail sur les boules en plastique, création de deux boules 2.0
+- Batterie de tests sur la puissance, création d'une courbe de distance de balle = f(puissance)
+- Travail sur l'initialisation de l'angle sur le code
+- Réparation de l'admission et de la plaque arduino pour le fonctionnement avec joystick
+- Prise d'un petit thé de la part de Mathis Guilhin
+- Reflexion sur la tribologie
+- Etiquettes pour les câbles
