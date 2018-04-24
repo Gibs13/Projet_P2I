@@ -1,6 +1,5 @@
 import lejos.hardware.Button;
 import lejos.hardware.lcd.LCD;
-//import lejos.hardware.lcd.LCD;
 import lejos.hardware.motor.EV3MediumRegulatedMotor;
 import lejos.hardware.motor.UnregulatedMotor;
 import lejos.hardware.port.MotorPort;
@@ -9,10 +8,11 @@ import lejos.utility.Timer;
 import lejos.utility.TimerListener;
 
 public class UseJoystick implements TimerListener{
-	
-	static final int VAR_TS = 100;
+	public static final int DEMULTIPLICATEUR = 7;
+	public static final int VAR_TS = 100;
 	
 	static Joystick joy1;
+	static Convertisseur conv;
 	
 	static UnregulatedMotor motorRoueA;
 	static UnregulatedMotor motorRoueB;
@@ -20,38 +20,42 @@ public class UseJoystick implements TimerListener{
 	static EV3MediumRegulatedMotor motorAdmis;
 	
 	//static int consigne;
-
-	float[] sample = new float [3];
+	
+	float[] sampleJoystick = new float [3];
 	int power = 0;
+	double phi;
+
 	
 	public void timedOut() {
-		sample = joy1.getSample();
+		sampleJoystick = joy1.getSample();
 		
-		if (sample[0]>900){
+		if (900<sampleJoystick[0] && 180>phi){
 			motorRot.setPower(40);
-		} else if(sample[0]<100){
+		} else if(100>sampleJoystick[0] && 0<phi){
 			motorRot.setPower(-40);;
 		}else {
 			motorRot.setPower(0);
 		}
 		
-		if (sample[1]>800 && power<100) {
+		if (sampleJoystick[1]>800 && power<100) {
 			power ++;
-		}else if (sample[1]<200 && power>0){
+		}else if (sampleJoystick[1]<200 && power>0){
 			power --;
 			
 		}
 		
-		if(0 == sample[2]) {
+		if(0 == sampleJoystick[2]) {
 			motorAdmis.rotate(120);
 		}
 		
 		motorRoueA.setPower(power);
 		motorRoueB.setPower(power);
 		
+		phi = phiMoteurToPhi(motorRot.getTachoCount());
+
 		LCD.clear();
-		LCD.drawString(""+power+" "+motorRot.getTachoCount(), 0, 0);
-		LCD.drawString(""+sample[0]+"  "+sample[1]+"  "+sample[2], 1, 1);
+		LCD.drawString("pow: "+power+" rot: "+phi, 0, 0);
+		LCD.drawString(""+sampleJoystick[0]+"  "+sampleJoystick[1]+"  "+sampleJoystick[2], 1, 1);
 	}
 	
 	
@@ -62,11 +66,13 @@ public class UseJoystick implements TimerListener{
 		motorRoueA = new UnregulatedMotor(MotorPort.A);
 		motorRoueB = new UnregulatedMotor(MotorPort.B);
 		motorRot = new UnregulatedMotor (MotorPort.C);
-		motorAdmis = new EV3MediumRegulatedMotor (MotorPort.D);
+		motorAdmis = new EV3MediumRegulatedMotor (MotorPort.D)
+
+
+		initialise();
 		
 		motorRoueA.resetTachoCount();
 		motorRoueB.resetTachoCount();
-		motorRot.resetTachoCount();
 		motorAdmis.resetTachoCount();
 		
 		UseJoystick obj = new UseJoystick ();
@@ -83,4 +89,34 @@ public class UseJoystick implements TimerListener{
 		
 	}
 
+	private double phiMoteurToPhi (double phiMoteur){
+		return phiMoteur/DEMULTIPLICATEUR;
+	}
+
+	private void initialise {
+
+		EV3TouchSensor butee = new EV3TouchSensor (SensorPort.S2);
+		butee.setCurrentMode(0);
+
+		float sampleButee = new float[butee.sampleSize()];
+		int resultButee;
+
+		motorRot.setPower(-40);
+		do {
+			butee.fetchSample(sampleTouch, 0);
+			resultButee = (int) (sampleTouch[0]);
+		}while (1!=resultButee);
+		motorRot.setPower(0);
+		motorRot.resetTachoCount();
+
+		motorRot.setPower(30);
+		do{
+			phi = phiMoteurToPhi(motorRot.getTachoCount());
+		}while(90<phi);
+		motorRot.setPower(0);
+
+	}
+
 }
+
+
