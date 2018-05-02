@@ -8,3 +8,13 @@
 - Reflexion sur la tribologie
 - Etiquettes pour les câbles
 - Modification de position des câbles
+
+02/05
+
+- Téo a rédigé sa note d'avancement
+- Travail sur l'initialisation de l'angle
+- Impression de 4 1/2 balles
+- Réparation du cablâge du joystick et optimisation de la plaque avec les résistances
+- programme java de contrôle par joystick
+- Ecoute de jazz, pour stimuler la créativité
+- Brainstorming sur le design de la boite
