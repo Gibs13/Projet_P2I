@@ -26,3 +26,9 @@
 - Rencontre avec el gran manitou, qui nous fournit une magnifique gaîne d'environ 8mm (zavez des bons yeux?), on ne sert à rien ici.
 - Gain de productivité
 - Demande en mariage
+
+15/05
+
+- Conception de la boite pour l'arduino
+- Conception et impression 3D du joystick en deux parties
+- Travail sur un client (EV3 Joystick) et un serveur (EV3 moteurs) en WiFi 
