@@ -41,3 +41,4 @@
 - Impression 3D de bidules
 - Teo le fou se nique la main
 - Travail sur le code pour la com. wifi
+- ça fonctionne
