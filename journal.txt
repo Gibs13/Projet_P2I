@@ -32,3 +32,12 @@
 - Conception de la boite pour l'arduino
 - Conception et impression 3D du joystick en deux parties
 - Travail sur un client (EV3 Joystick) et un serveur (EV3 moteurs) en WiFi 
+
+
+16/05
+- Conception de la boîte
+- Communication wifi entre les deux ev3
+- Reflexion sur le point d'accroche du joystick
+- Impression 3D de bidules
+- Teo le fou se nique la main
+- Travail sur le code pour la com. wifi
