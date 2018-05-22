@@ -42,3 +42,12 @@
 - Teo le fou se nique la main
 - Travail sur le code pour la com. wifi
 - ça fonctionne
+
+22/05
+- Découpe boîte
+- Réalisation poster
+- Programmation de l'arduino pour la communication Wifi
+- Elaboration d'une mignone boîte d'esthétique de Joystick pour le travail du confort de l'handicap
+- Rajout d'un point de contact pour l'initialisation
+- Rjout de la ligne "édition du journal de bord", dans le journal de bord
+- édition du journal de bord
