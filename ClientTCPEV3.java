@@ -64,7 +64,7 @@ public class ClientTCPEV3 {
 	public static void main(String[] args) throws IOException {
 
 		joy1 = new Joystick(SensorPort.S1);
-		ClientEV3 obj = new ClientEV3();
+		ClientTCPEV3 obj = new ClientTCPEV3();
 		obj.initialize();
 
 		try {
