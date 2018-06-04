@@ -86,13 +86,12 @@ public class ServerTCPEV3 {
 					motorRoueDroite.forward();
 
 					// Fermeture de la communication out.close(); in.close();
-					clientSocket.close();
+//					clientSocket.close();
+				
 					System.out.println();
 				}
-
-				update();
-				System.out.println("j'update");
-				clientSocket.close();
+				
+				
 				
 			}		
 
@@ -136,35 +135,4 @@ public class ServerTCPEV3 {
 
 	}
 
-	public static void update() {
-		if (sampleJoystick[0] > 900 && 35 < phi) {
-			// motorRot.setPower(40);
-			motorRot.setPower(30);
-		} else if (sampleJoystick[0] < 100 && 145 > phi) {
-			// motorRot.setPower(-40);
-			motorRot.setPower(-30);
-		} else {
-			motorRot.setPower(0);
-		}
-
-		if (sampleJoystick[1] > 700 && power > 0) {
-			power -= 7;
-		} else if (sampleJoystick[1] < 200 && power < 800) {
-			power += 7;
-
-		}
-
-		if (sampleJoystick[2]==0) {
-			motorAdmis.setSpeed(1000);
-			motorAdmis.rotate(120);
-			motorAdmis.stop();
-		}
-		motorRoueGauche.setSpeed(power);
-		motorRoueDroite.setSpeed(power);
-		motorRoueGauche.forward();
-		motorRoueDroite.forward();
-		phi = phiMoteurToPhi(motorRot.getTachoCount());
-		
-
-	}
 }

@@ -36,7 +36,7 @@ public class ClientEV3 {
 	static double phi;
 	static double phi1;
 
-	static String serverHostname = new String("134.214.223.69"); // L'adresse du
+	static String serverHostname = new String("192.168.137.74"); // L'adresse du
 																	// serveur
 	static int portNumber = 5001; // Le port du serveur
 
@@ -75,7 +75,7 @@ public class ClientEV3 {
 				obj.initialize();
 				obj.update();
 				System.out.println("jenvoie pow");
-				out.println("PowerRot :" + powerRot);
+				//out.println("PowerRot :" + powerRot);
 				System.out.println("PowerRot :" + powerRot);
 				System.out.println("PowerAdmis :" + powerAdmis);
 				System.out.println("Power :" + power);
@@ -105,12 +105,10 @@ public class ClientEV3 {
 			System.out.println("test" + phi);
 
 			if (900 < sampleJoystick[1] && 35 < phi) {
-				// motorRot.setPower(40);
-				powerRot = 30;
+				powerRot = 40;
 				out.println("PowerRot :" + powerRot);
 			} else if (100 > sampleJoystick[1] && 145 > phi) {
-				// motorRot.setPower(-40);
-				powerRot = -30;
+				powerRot = -40;
 				out.println("PowerRot :" + powerRot);
 			} else {
 				// motorRot.setPower(0);
@@ -118,10 +116,10 @@ public class ClientEV3 {
 				out.println("PowerRot :" + powerRot);
 			}
 
-			if (sampleJoystick[0] > 800 && power > 0) {
-				power -= 7;
-			} else if (sampleJoystick[0] < 200 && power < 800) {
-				power += 7;
+			if (sampleJoystick[0] <200 && power > 0) {
+				power -= 15;
+			} else if (sampleJoystick[0] >800 && power < 800) {
+				power += 15;
 
 			}
 
