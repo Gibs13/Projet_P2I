@@ -17,7 +17,7 @@ import lejos.hardware.port.SensorPort;
 import lejos.utility.Delay;
 import lejos.utility.TimerListener;
 
-public class ClientEV3 {
+public class ClientTCPEV3 {
 	public static final int DEMULTIPLICATEUR = 7;
 	public static final int VAR_TS = 100;
 
